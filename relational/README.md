@@ -9,7 +9,23 @@ SQLite is a small disk-based relational database engine often used in mobile app
 
 ### Run the App
 In the `relational` directory:
-1. `python -m venv .venv`
-2. `. .venv/bin/activate`
-3. `pip3 install -r requirements.txt`
-4. `flask run --debug`
+1. Create a virtual environment `.venv`
+  ```
+  python -m venv .venv
+  ```
+2. Add execute permissions so we can activate the virtual environment
+  ```
+  chmod +x .venv/bin/activate
+  ```
+3. Activate the virtual environment (don't forget the `.`!)
+  ```
+  . .venv/bin/activate
+  ```
+4. Install the necessary packages from `requirements.text`
+  ```
+  pip3 install -r requirements.txt
+  ```
+5. Run the app
+  ```
+  flask run --debug
+  ```
