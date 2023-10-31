@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Relational Databases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+  </head>
+  <body>
+    <h1 class='content-title'>Relational Doggos</h1>
+    <div class='content-adder'>
+      <form method='POST' action={{ url_for('add') }}>
+        {{ add_form.csrf_token }}
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Breed</th>
+          </tr>
+          <tr>
+            <td>
+              <div>{{ add_form.name() }}</div>
+            </td>
+            <td>
+              <div>{{ add_form.age() }}</div>
+            </td>
+            <td>
+              <div>{{ add_form.breed() }}</div>
+            </td>
+          </tr>
+        </table>
+        {% if add_form.errors %}
+          <h4 class='errors-title'>Oops, your submission had errors.</h4>
+          <ul class="errors">
+              {% for field_name, field_errors in add_form.errors|dictsort if field_errors %}
+                  {% for error in field_errors %}
+                      <li>{{ error }}</li>
+                  {% endfor %}
+              {% endfor %}
+          </ul>
+        {% endif %}
+        <input type='submit' value="Add Row">
+      </form>
+    </div>
+    <div class='content-card-list'>
+      {% if (data is defined) and data %}
+      <table>
+        <tr>
+          <th>Primary Key</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Breed</th>
+          <th></th>
+        </tr>
+        {% for d in data %}
+          <tr>
+            <td>{{ d[0] }}</td>
+            <td>{{ d[1] }}</td>
+            <td>{{ d[2] }}</td>
+            <td>{{ d[3] }}</td>
+            <td>
+              <form method='POST' action={{ url_for('delete') }} class='delete_button'> 
+                {{ delete_form.csrf_token }}
+                {{ delete_form.id(value=d[0], class_='hidden') }}
+                <input type='image' src={{ url_for('static', filename='delete.svg') }} alt='Delete alert' width="20px">
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <p class="notice">No data found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

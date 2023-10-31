@@ -1,0 +1,130 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #0f1e18;
+  background-color: white;
+  margin: 0 100px; 
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+li {
+  font-size: 17px;
+}
+
+.content {
+  flex: 4;
+  padding: 50px;
+}
+
+.notice {
+  text-align: center;
+  font-style: italic;
+  color: #63706b
+}
+
+.content-title {
+  margin-bottom: 30px;
+}
+
+.content-adder {
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.20);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.content-adder table {
+  margin-bottom: 10px;
+}
+
+.content-adder tr:first-child {
+  background-color: #F6F6F6;
+  text-align: left;
+  color: #1b2c23;
+}
+
+.content-adder tr {
+  background-color: white;
+}
+
+.content-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 7px;
+}
+
+tr:nth-child(odd) {
+  background-color: #F6F6F6;
+}
+
+td, th{
+  padding: 10px;
+  text-align: left;
+}
+
+tr:first-child {
+  background-color: #1b2c23;
+  color: white;
+}
+
+input[type=submit] {
+  background-color: #1b2c23;
+  color: white;
+  border: solid #1b2c23 3px;
+  padding: 7px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: #1b2c23;
+}
+
+.errors-title {
+  color: red;
+  margin-bottom: 0px;
+}
+
+.errors {
+  color: red;
+  list-style: none;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+tr:hover .delete_button {
+  visibility: visible;
+}
+
+.delete_button {
+  visibility: hidden;
+}
+
+.expired {
+  color: red;
+  font-weight: bold;
+}
