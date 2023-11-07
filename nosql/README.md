@@ -29,7 +29,7 @@ Firebase is a NoSQL database management system. In this app, it's used to protot
   ```
   npm install
   ```
-1. Run the app
+3. Run the app
   ```
   npm start
   ```

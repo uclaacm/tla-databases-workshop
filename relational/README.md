@@ -25,11 +25,15 @@ In the `relational` directory:
   ```
   pip3 install -r requirements.txt
   ```
-5. Run the app
+5. Create a file `relational.db`. This is our SQLite database!
+  ```
+  touch relational.db
+  ```
+6. Run the app
   ```
   python app.py
   ```
-5. Stop the app with `^C` and end the virtual environment
+7. Stop the app with `^C` and end the virtual environment
   ```
   deactivate
   ```
