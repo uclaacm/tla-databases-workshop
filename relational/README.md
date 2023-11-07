@@ -27,7 +27,7 @@ In the `relational` directory:
   ```
 5. Run the app
   ```
-  flask run --debug
+  python app.py
   ```
 5. Stop the app with `^C` and end the virtual environment
   ```
