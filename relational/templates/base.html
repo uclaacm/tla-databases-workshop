@@ -60,7 +60,7 @@
             <td>
               <form method='POST' action={{ url_for('delete') }} class='delete_button'> 
                 {{ delete_form.csrf_token }}
-                {{ delete_form.id(value=d[0], class_='hidden') }}
+                {{ delete_form.pk(value=d[0], class_='hidden') }}
                 <input type='image' src={{ url_for('static', filename='delete.svg') }} alt='Delete alert' width="20px">
               </form>
             </td>
