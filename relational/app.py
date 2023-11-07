@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField
 from wtforms.validators import InputRequired, ValidationError
 
-from db import get_db, add_row, delete_row
+from db import get_db, add_row, delete_row, init_db
 
 breed_choices = [
     'Beagle',
@@ -35,6 +35,7 @@ app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY='dev',
 )
+init_db()
 
 @app.route('/')
 def index():
