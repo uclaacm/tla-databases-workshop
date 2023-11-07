@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, addDoc, doc, deleteDoc } from 'firebase/firestore'
 import { db } from './index.js'
 import DeleteImage from './delete.svg'
 
@@ -22,12 +22,12 @@ function App() {
   const [age, setAge] = useState("");
   const [breed, setBreed] = useState(breedChoices[0]);
   const [errors, setErrors] = useState([])
+  const collectionRef = collection(db, "doggos")
 
   function handleValidation() {
     let isValid = true;
     let err = []
     // name
-    console.log(name)
     if (!name) {
       isValid = false;
       err.push("Name cannot be empty");
@@ -52,23 +52,56 @@ function App() {
   }
 
   function handleSubmit(event) {
+    const addRow = async () => {
+      try {
+        await addDoc(collectionRef, {
+          name: name,
+          age: age,
+          breed: breed
+        });
+      } catch {
+        alert("Error adding row to Firebase")
+      }
+    }
+
     event.preventDefault();
     if (handleValidation()) {
-      // TODO: add a new row in the database with name, age, and breed
+      addRow()
       setErrors([])
     }
   }
 
   function handleDelete(event) {
-    // TODO: delete selected row from the database (selected id is stored in event.target.dataset.id)
+    const deleteRow = async () => {
+      try {
+        const docRef = doc(db, "doggos", event.target.dataset.id);
+        await deleteDoc(docRef);
+      } catch (error) {
+        alert("Error deleting row from Firebase")
+      }
+    }
+
+    deleteRow()
   }
 
   useEffect(() => {
     const fetchDoggos = async () => {
-      // TODO: fetch data from the Firestore Database to display on the web page
+      try {
+        const querySnapshot = await getDocs(collectionRef)
+        var docs = []
+        querySnapshot.forEach((doc) => {
+          var d = doc.data()
+          d["id"] = doc.id
+          docs.push(d)
+        });
+        setData(docs)
+      } catch (error) {
+        alert("Error fetching data from Firebase")
+      }
     }
+
     fetchDoggos()
-  }, [])
+  }, [handleSubmit, handleDelete])
 
   return (
     <div>
