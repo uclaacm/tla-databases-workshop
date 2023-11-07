@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, addDoc, doc, deleteDoc } from 'firebase/firestore'
 import { db } from './index.js'
 import DeleteImage from './delete.svg'
 
