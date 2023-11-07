@@ -29,3 +29,7 @@ In the `relational` directory:
   ```
   flask run --debug
   ```
+5. Stop the app with `^C` and end the virtual environment
+  ```
+  deactivate
+  ```
